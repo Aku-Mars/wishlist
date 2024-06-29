@@ -15,6 +15,8 @@
             margin: 0;
             padding: 20px;
             transition: background-color 0.5s, color 0.5s;
+            background-color: #f0f0f0; /* Light mode background */
+            color: #333; /* Light mode text color */
         }
 
         h1 {
@@ -62,6 +64,7 @@
         ul {
             list-style-type: none;
             padding: 0;
+            margin: 0;
         }
 
         li {
@@ -71,139 +74,27 @@
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            transition: background-color 0.5s;
+            justify-content: space-between;
+            transition: background-color 0.5s, color 0.5s;
         }
 
-        .completed {
+        .completed .wishlist-text {
             text-decoration: line-through;
             color: #abb2bf;
         }
 
         .checkbox-container {
-            margin-right: 10px;
-        }
-
-        #checklist {
-            --background: #fff;
-            --text: #414856;
-            --check: #4f29f0;
-            --disabled: #c3c8de;
-            --width: 100px;
-            --height: 180px;
-            --border-radius: 10px;
-            background: var(--background);
-            width: var(--width);
-            height: var(--height);
-            border-radius: var(--border-radius);
-            position: relative;
-            box-shadow: 0 10px 30px rgba(65, 72, 86, 0.05);
-            padding: 30px 85px;
-            display: grid;
-            grid-template-columns: 30px auto;
+            display: flex;
             align-items: center;
-            justify-content: center;
-        }
-
-        #checklist label {
-            color: var(--text);
-            position: relative;
-            cursor: pointer;
-            display: grid;
-            align-items: center;
-            width: fit-content;
-            transition: color 0.3s ease;
-            margin-right: 20px;
-        }
-
-        #checklist label::before, #checklist label::after {
-            content: "";
-            position: absolute;
-        }
-
-        #checklist label::before {
-            height: 2px;
-            width: 8px;
-            left: -27px;
-            background: var(--check);
-            border-radius: 2px;
-            transition: background 0.3s ease;
-        }
-
-        #checklist label:after {
-            height: 4px;
-            width: 4px;
-            top: 8px;
-            left: -25px;
-            border-radius: 50%;
-        }
-
-        #checklist input[type="checkbox"] {
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            position: relative;
-            height: 15px;
-            width: 15px;
-            outline: none;
-            border: 0;
-            margin: 0 15px 0 0;
-            cursor: pointer;
-            background: var(--background);
-            display: grid;
-            align-items: center;
-            margin-right: 20px;
-        }
-
-        #checklist input[type="checkbox"]::before, #checklist input[type="checkbox"]::after {
-            content: "";
-            position: absolute;
-            height: 2px;
-            top: auto;
-            background: var(--check);
-            border-radius: 2px;
-        }
-
-        #checklist input[type="checkbox"]::before {
-            width: 0px;
-            right: 60%;
-            transform-origin: right bottom;
-            transition: width 0.4s ease;
-        }
-
-        #checklist input[type="checkbox"]::after {
-            width: 0px;
-            left: 40%;
-            transform-origin: left bottom;
-            transition: width 0.4s ease;
-        }
-
-        #checklist input[type="checkbox"]:checked::before {
-            animation: check-01 0.6s ease forwards;
-        }
-
-        #checklist input[type="checkbox"]:checked::after {
-            animation: check-02 0.6s ease forwards;
-        }
-
-        #checklist input[type="checkbox"]:checked + label {
-            color: var(--disabled);
-            animation: move 0.5s ease 0.1s forwards;
-        }
-
-        #checklist input[type="checkbox"]:checked + label::before {
-            background: var(--disabled);
-            animation: slice 0.6s ease forwards;
-        }
-
-        #checklist input[type="checkbox"]:checked + label::after {
-            animation: firework 0.7s ease forwards 0.1s;
         }
 
         .wishlist-text {
             font-weight: bold;
             flex-grow: 1;
+            margin-left: 10px;
             transition: color 0.3s ease;
+            white-space: nowrap;
         }
 
         a {
@@ -223,17 +114,43 @@
 
         /* Dark Mode Styles */
         body.dark-mode {
-            background-color: #282c35;
+            background-color: #282c35; /* Dark mode background */
+            color: #e0e0e0; /* Dark mode text color */
         }
 
-        li.dark-mode {
+        body.dark-mode ul {
+            color: #e0e0e0;
+        }
+
+        body.dark-mode li {
             background-color: #3a3f4b;
         }
 
-        /* Additional Styling */
+        body.dark-mode .completed .wishlist-text {
+            color: #a0a0a0;
+        }
+
+        body.dark-mode .edit-button {
+            background-color: #4CAF50;
+        }
+
+        body.dark-mode .edit-button:hover {
+            background-color: #45a049;
+        }
+
+        body.dark-mode .delete-button {
+            background-color: #ff4d4d;
+        }
+
+        body.dark-mode .delete-button:hover {
+            background-color: #e60000;
+        }
+
         .actions-container {
             display: flex;
             align-items: center;
+            justify-content: space-between;
+            width: 100%;
         }
         
         .delete-button {
@@ -245,7 +162,6 @@
             border-radius: 4px;
             cursor: pointer;
             transition: transform 0.3s, background-color 0.3s;
-            margin-left: 10px;
             display: none;
         }
 
@@ -271,12 +187,7 @@
             transform: scale(1.2);
         }
 
-        .actions-container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
+        /* Mobile Styles */
         @media (max-width: 600px) {
             input {
                 width: 100%;
@@ -286,7 +197,7 @@
             button {
                 margin-top: 10px;
                 width: 100%;
-                margin-left: 0px;
+                margin-left: 0;
             }
 
             .chat-container {
@@ -304,8 +215,8 @@
             }
 
             li {
-                flex-direction: column;
-                align-items: flex-start;
+                flex-direction: row;
+                align-items: center;
             }
         }
 
@@ -317,8 +228,9 @@
         <form action="add.php" method="POST">
             <input type="text" name="item" required>
             <button type="submit">Tambah</button>
-            <button class="edit-button" id="edit-button" onclick="toggleDeleteButtons()">Edit</button>
+            <button class="edit-button" id="edit-button" type="button" onclick="toggleDeleteButtons()">Edit</button>
         </form>
+        <!-- <button id="theme-toggle" type="button">Toggle Dark Mode</button> -->
         <?php
         if (isset($_SESSION['messages'])) {
             echo '<ul>';
@@ -329,7 +241,7 @@
             unset($_SESSION['messages']);
         }
         ?>
-        <ul>
+        <ul id="checklist">
             <?php
             include 'db.php';
             $result = $conn->query("SELECT * FROM wishlist");
@@ -337,10 +249,8 @@
                 $completedClass = $row['completed'] ? 'completed' : '';
                 $checked = $row['completed'] ? 'checked' : '';
                 echo "<li class=\"$completedClass\">
-                        <div class=\"actions-container\">
-                            <div class=\"checkbox-container\">
-                                <input type=\"checkbox\" $checked onchange=\"location.href='complete.php?id={$row['id']}'\">
-                            </div>
+                        <div class=\"checkbox-container\">
+                            <input type=\"checkbox\" $checked onchange=\"location.href='complete.php?id={$row['id']}'\">
                             <span class=\"wishlist-text\">{$row['item']}</span>
                         </div>
                         <button class=\"delete-button\" id=\"delete-{$row['id']}\" onclick=\"location.href='delete.php?id={$row['id']}'\">Hapus</button>
@@ -349,8 +259,6 @@
             ?>
         </ul>
     </div>
-
-    <script src="toggle_delete.js"></script>
 
     <script>
         const body = document.body;
@@ -370,6 +278,14 @@
 
         // Set up event listener for theme toggle button
         themeToggle.addEventListener('click', toggleTheme);
+
+        // Function to toggle delete buttons visibility
+        const toggleDeleteButtons = () => {
+            const deleteButtons = document.querySelectorAll('.delete-button');
+            deleteButtons.forEach(button => {
+                button.style.display = button.style.display === 'block' ? 'none' : 'block';
+            });
+        };
     </script>
 
 </body>
