@@ -43,7 +43,7 @@
         }
 
         button {
-            background-color: #ff69b4; /* Pink color */
+            background-color: #4CAF50;
             color: white;
             padding: 8px 12px;
             margin-left: 10px;
@@ -55,7 +55,7 @@
         }
 
         button:hover {
-            background-color: #ff1493; /* Darker pink color */
+            background-color: #45a049;
             transform: scale(1.2);
         }
 
@@ -237,7 +237,7 @@
         }
         
         .delete-button {
-            background-color: #ff69b4; /* Pink color */
+            background-color: #ff4d4d;
             color: white;
             padding: 8px 12px;
             font-size: 1em;
@@ -250,12 +250,12 @@
         }
 
         .delete-button:hover {
-            background-color: #ff1493; /* Darker pink color */
+            background-color: #e60000;
             transform: scale(1.2);
         }
 
         .edit-button {
-            background-color: #ff69b4; /* Pink color */
+            background-color: #4CAF50;
             color: white;
             padding: 8px 20px;
             font-size: 1em;
@@ -267,7 +267,7 @@
         }
 
         .edit-button:hover {
-            background-color: #ff1493; /* Darker pink color */
+            background-color: #45a049;
             transform: scale(1.2);
         }
 
@@ -306,8 +306,6 @@
             li {
                 flex-direction: column;
                 align-items: flex-start;
-                padding: 10px;
-                margin: 5px 0;
             }
         }
 
