@@ -41,6 +41,7 @@
             background-color: #4CAF50;
             color: white;
             padding: 8px 12px;
+            margin-left: 10px;
             font-size: 1em;
             border: none;
             border-radius: 4px;
@@ -251,7 +252,7 @@
         .edit-button {
             background-color: #4CAF50;
             color: white;
-            padding: 8px 12px;
+            padding: 8px 20px;
             font-size: 1em;
             border: none;
             border-radius: 4px;
@@ -271,6 +272,37 @@
             justify-content: space-between;
         }
 
+        @media (max-width: 600px) {
+            input {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            button {
+                margin-top: 10px;
+                width: 100%;
+            }
+
+            .chat-container {
+                padding: 0 10px;
+            }
+
+            .actions-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .delete-button, .edit-button {
+                width: 100%;
+                margin: 5px 0;
+            }
+
+            li {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -279,6 +311,7 @@
         <form action="add.php" method="POST">
             <input type="text" name="item" required>
             <button type="submit">Tambah</button>
+            <button class="edit-button" id="edit-button" onclick="toggleDeleteButtons()">Edit</button>
         </form>
         <?php
         if (isset($_SESSION['messages'])) {
@@ -309,7 +342,6 @@
             }
             ?>
         </ul>
-        <button class="edit-button" id="edit-button" onclick="toggleDeleteButtons()">Edit</button>
     </div>
 
     <script src="toggle_delete.js"></script>
