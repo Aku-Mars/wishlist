@@ -240,12 +240,37 @@
             cursor: pointer;
             transition: transform 0.3s, background-color 0.3s;
             margin-left: 10px;
+            display: none;
         }
 
         .delete-button:hover {
             background-color: #e60000;
             transform: scale(1.2);
         }
+
+        .edit-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 8px 12px;
+            font-size: 1em;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: transform 0.3s, background-color 0.3s;
+            margin-left: 10px;
+        }
+
+        .edit-button:hover {
+            background-color: #45a049;
+            transform: scale(1.2);
+        }
+
+        .actions-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
     </style>
 </head>
 <body>
@@ -278,13 +303,16 @@
                                 <input type=\"checkbox\" $checked onchange=\"location.href='complete.php?id={$row['id']}'\">
                             </div>
                             <span class=\"wishlist-text\">{$row['item']}</span>
-                            <button class=\"delete-button\" onclick=\"location.href='delete.php?id={$row['id']}'\">Hapus</button>
                         </div>
+                        <button class=\"delete-button\" id=\"delete-{$row['id']}\" onclick=\"location.href='delete.php?id={$row['id']}'\">Hapus</button>
                       </li>";
             }
             ?>
         </ul>
+        <button class="edit-button" id="edit-button" onclick="toggleDeleteButtons()">Edit</button>
     </div>
+
+    <script src="toggle_delete.js"></script>
 
     <script>
         const body = document.body;
