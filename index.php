@@ -3,7 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wishlist App</title>
+    <meta property="og:title" content="Feel Free To Make a List">
+    <meta property="og:description" content="Mars Hub">
+    <meta property="og:image" content="https://raw.githubusercontent.com/Aku-Mars/gambar/main/bannercps.png">
+    <meta property="og:url" content="https://akumars.dev/">    
+    <title>Make List In Here</title>
+    <link rel="icon" href="https://raw.githubusercontent.com/Aku-Mars/gambar/main/neko.png" type="image/x-icon">
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -38,7 +43,7 @@
         }
 
         button {
-            background-color: #4CAF50;
+            background-color: #ff69b4; /* Pink color */
             color: white;
             padding: 8px 12px;
             margin-left: 10px;
@@ -50,7 +55,7 @@
         }
 
         button:hover {
-            background-color: #45a049;
+            background-color: #ff1493; /* Darker pink color */
             transform: scale(1.2);
         }
 
@@ -232,7 +237,7 @@
         }
         
         .delete-button {
-            background-color: #ff4d4d;
+            background-color: #ff69b4; /* Pink color */
             color: white;
             padding: 8px 12px;
             font-size: 1em;
@@ -245,12 +250,12 @@
         }
 
         .delete-button:hover {
-            background-color: #e60000;
+            background-color: #ff1493; /* Darker pink color */
             transform: scale(1.2);
         }
 
         .edit-button {
-            background-color: #4CAF50;
+            background-color: #ff69b4; /* Pink color */
             color: white;
             padding: 8px 20px;
             font-size: 1em;
@@ -262,7 +267,7 @@
         }
 
         .edit-button:hover {
-            background-color: #45a049;
+            background-color: #ff1493; /* Darker pink color */
             transform: scale(1.2);
         }
 
@@ -301,6 +306,8 @@
             li {
                 flex-direction: column;
                 align-items: flex-start;
+                padding: 10px;
+                margin: 5px 0;
             }
         }
 
