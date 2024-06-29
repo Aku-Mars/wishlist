@@ -196,7 +196,7 @@
 
             button {
                 margin-top: 10px;
-                width: 100%;
+                width: 20%;
                 margin-left: 0;
             }
 
@@ -210,8 +210,8 @@
             }
 
             .delete-button, .edit-button {
-                width: 100%;
-                margin: 5px 0;
+                width: 20%;
+                margin: 5px 10px;
             }
 
             li {
@@ -230,7 +230,7 @@
             <button type="submit">Tambah</button>
             <button class="edit-button" id="edit-button" type="button" onclick="toggleDeleteButtons()">Edit</button>
         </form>
-        <!-- <button id="theme-toggle" type="button">Toggle Dark Mode</button> -->
+        <button id="theme-toggle" type="button">Toggle Dark Mode</button>
         <?php
         if (isset($_SESSION['messages'])) {
             echo '<ul>';
