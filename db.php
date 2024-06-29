@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
-$username = "mars";
-$password = "Mars123";
+$username = "admin";
+$password = "SOK1PSTIC";
 $dbname = "wishlist_db";
 
 // Create connection
