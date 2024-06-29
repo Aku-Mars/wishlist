@@ -229,36 +229,60 @@
             display: flex;
             align-items: center;
         }
+        
+        .delete-button {
+            background-color: #ff4d4d;
+            color: white;
+            padding: 8px 12px;
+            font-size: 1em;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: transform 0.3s, background-color 0.3s;
+            margin-left: 10px;
+        }
 
+        .delete-button:hover {
+            background-color: #e60000;
+            transform: scale(1.2);
+        }
     </style>
 </head>
 <body>
     <div class="chat-container">
         <h1>Wishlist</h1>
-        <form action="/add" method="POST">
+        <form action="add.php" method="POST">
             <input type="text" name="item" required>
             <button type="submit">Tambah</button>
         </form>
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                <ul>
-                    {% for message in messages %}
-                        <li>{{ message }}</li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
-        {% endwith %}
+        <?php
+        if (isset($_SESSION['messages'])) {
+            echo '<ul>';
+            foreach ($_SESSION['messages'] as $message) {
+                echo "<li>$message</li>";
+            }
+            echo '</ul>';
+            unset($_SESSION['messages']);
+        }
+        ?>
         <ul>
-            {% for item in wishlist %}
-                <li class="{% if item.completed %}completed{% endif %}">
-                    <div class="actions-container">
-                        <div class="checkbox-container">
-                            <input type="checkbox" {% if item.completed %}checked{% endif %} onchange="location.href='/complete/{{ item.id }}'">
+            <?php
+            include 'db.php';
+            $result = $conn->query("SELECT * FROM wishlist");
+            while ($row = $result->fetch_assoc()) {
+                $completedClass = $row['completed'] ? 'completed' : '';
+                $checked = $row['completed'] ? 'checked' : '';
+                echo "<li class=\"$completedClass\">
+                        <div class=\"actions-container\">
+                            <div class=\"checkbox-container\">
+                                <input type=\"checkbox\" $checked onchange=\"location.href='complete.php?id={$row['id']}'\">
+                            </div>
+                            <span class=\"wishlist-text\">{$row['item']}</span>
+                            <button class=\"delete-button\" onclick=\"location.href='delete.php?id={$row['id']}'\">Hapus</button>
                         </div>
-                        <span class="wishlist-text">{{ item.item }}</span>
-                    </div>
-                </li>
-            {% endfor %}
+                      </li>";
+            }
+            ?>
         </ul>
     </div>
 
